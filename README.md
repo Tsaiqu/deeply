@@ -1,4 +1,4 @@
-✨ Spark – Couple Cards 2.0
+✨ Deeply – Couple Cards 2.0
 
 A digital take on classic conversation decks for couples. No more lost boxes—just a phone and a moment to connect.
 🛠 Tech Stack (The "No-Config" Club)
