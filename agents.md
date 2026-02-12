@@ -13,3 +13,6 @@ Coding Standards
  * Minimalism: Prioritize readability and minimal "boilerplate". If a feature can be implemented using native Next.js functionality, do not suggest an external library.
  * Database Driven: Ensure all dynamic content (questions, categories) is fetched from Supabase, not hardcoded in the frontend.
  * Security: Ensure Row Level Security (RLS) is considered in every data-related suggestion. Never expose service role keys to the client side.
+
+To setup database use
+`npm install @supabase/auth-helpers-nextjs @supabase/supabase-js`
