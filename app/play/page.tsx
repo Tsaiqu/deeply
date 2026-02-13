@@ -14,7 +14,7 @@ export default async function PlayPage({
   const isSafeMode = safe === "true";
 
   // Fetch questions
-  const { data: questions, error } = await supabase
+  const { data: questions } = await supabase
     .from("questions")
     .select("*")
     .limit(15);
@@ -32,7 +32,7 @@ export default async function PlayPage({
     <main className="relative min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden">
       {/* Top Navigation */}
       <div className="absolute top-8 left-8">
-        <button className="text-gold opacity-80 hover:opacity-100 transition-opacity">
+        <button className="text-[#D4AF37] opacity-80 hover:opacity-100 transition-opacity">
           <Menu className="w-6 h-6 text-[#D4AF37]" />
         </button>
       </div>
@@ -61,16 +61,6 @@ export default async function PlayPage({
         questions={displayQuestions} 
         isSafeMode={isSafeMode} 
       />
-
-      {/* Theme Styles for Gold */}
-      <style jsx global>{`
-        .text-gold {
-          color: #D4AF37;
-        }
-        .border-gold {
-          border-color: #D4AF37;
-        }
-      `}</style>
     </main>
   );
 }
