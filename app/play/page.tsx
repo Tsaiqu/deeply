@@ -7,11 +7,12 @@ import { Menu, ShieldCheck, ShieldAlert } from "lucide-react";
 export default async function PlayPage({
   searchParams,
 }: {
-  searchParams: Promise<{ safe?: string }>;
+  searchParams: Promise<{ safe?: string; index?: string }>;
 }) {
   const supabase = await createClient();
-  const { safe } = await searchParams;
+  const { safe, index } = await searchParams;
   const isSafeMode = safe === "true";
+  const currentIndex = parseInt(index || "0");
 
   // Fetch questions
   const { data: questions } = await supabase
@@ -32,14 +33,14 @@ export default async function PlayPage({
     <main className="relative min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden">
       {/* Top Navigation */}
       <div className="absolute top-8 left-8">
-        <button className="text-[#D4AF37] opacity-80 hover:opacity-100 transition-opacity">
+        <Link href="/" className="text-[#D4AF37] opacity-80 hover:opacity-100 transition-opacity">
           <Menu className="w-6 h-6 text-[#D4AF37]" />
-        </button>
+        </Link>
       </div>
 
       <div className="absolute top-8 right-8 flex items-center gap-2">
         <Link 
-          href={`/play?safe=${!isSafeMode}`}
+          href={`/play?safe=${!isSafeMode}&index=${currentIndex}`}
           className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D4AF37]/30 bg-[#1A1A1A]/50 backdrop-blur-sm text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-colors text-xs uppercase tracking-widest"
         >
           {isSafeMode ? (
@@ -60,6 +61,7 @@ export default async function PlayPage({
       <CardContainer 
         questions={displayQuestions} 
         isSafeMode={isSafeMode} 
+        currentIndex={currentIndex}
       />
     </main>
   );
